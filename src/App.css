@@ -1,0 +1,132 @@
+
+.bg-color {
+  background: #DDDDDD;
+}
+
+.user-text {
+  color: #76885B !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+}
+
+/* _______________ Footer Hover _____________ */
+.show-footer-text {
+  position: relative;
+  padding: 2px 3px;
+  font-size: 16px;
+  /* font-weight: 200; */
+  color: white;
+  background-color: #1e293b;
+}
+
+.text-color {
+  color: rgb(20, 18, 18);
+}
+
+/* _________________ Form Input _____________ */
+.input-field-color {
+  width: 100%;
+  border-radius: 6px ;
+  background: #f2f1f0;
+  font-size: 18px;
+  padding: 12px 8px;
+}
+.input-field-color:focus{
+  outline: none;
+}
+
+.button-bg {
+  background-color: #76885B;
+}
+
+.button-bg-hover {
+  background-color: #627254;
+}
+
+.body-text {
+  font-size: 16px;
+}
+
+.heading-text-size {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  padding: 12px 0;
+  text-transform: capitalize;
+}
+
+.subheading-text-size {
+  font-size: 19px;
+}
+
+.caption {
+  font-size: 14px;
+}
+
+.footer {
+  color: #76885B;
+  /* padding: 4px; */
+  font-size: 14px;
+}
+
+/* __________________ Home _________________ */
+.bg-home-image {
+  background: url('https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-person-is-writing-with-a-pen-on-a-piece-of-paper-image_2943376.jpg') no-repeat;
+  background-size: cover;
+}
+
+/* ____________ Users ____________ */
+.bg-users-img {
+  background: url('https://saltwire.imgix.net/stethoscope.jpg?cs=srgb&fit=crop&h=568&w=847&dpr=1&auto=format%2Ccompress%2Cenhance') no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 20px;
+}
+
+.bg-users-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(66, 66, 66, 0.5);
+  /* Semi-transparent overlay */
+  z-index: 0;
+  /* Behind the child elements */
+}
+
+/* ______________ Small screen Menu _______________ */
+.mobile-menu {
+  border-radius: none;
+  font-size: 20px;
+}
+
+/* .mobile-menu:hover {
+  color: rgb(30, 30, 164);
+} */
+
+/* ___________ Blink Button Text ______________ */
+.blinking-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #f44336;
+  cursor: pointer;
+  animation: blink .8s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
