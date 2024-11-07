@@ -20,12 +20,9 @@ function Users() {
 
         e.preventDefault()
 
-        // if (selectedOption === "Employee") {
-        //     navigate('/employeeLogin', { state: selectedOption })
-        // }
-        // else 
-        if (selectedOption)
-            navigate('/login', { state: selectedOption })
+        if (selectedOption){
+            setMessage('') // change
+            navigate('/login', { state: selectedOption })}
         else
             setMessage("Select User Type First")
 
@@ -36,7 +33,7 @@ function Users() {
             navigate(userData.dashboardPath)
         else
             navigate('/')
-    }, [userData.dashboardPath])
+    }, [userData.dashboardPath , navigate])
 
 
     return (
@@ -67,18 +64,7 @@ function Users() {
                                     <p className="ml-3 text-color subheading-text-size">Vendor <span className='block'>( Corporate or Individual)</span></p>
                                 </label>
                             </div>
-                            {/* <div>
-                                <label className="inline-flex items-center">
-                                    <input
-                                        type="radio"
-                                        value="Individual"
-                                        checked={selectedOption === 'Individual'}
-                                        onChange={handleOptionChange}
-                                        className="form-radio text-blue-600"
-                                    />
-                                    <span className="ml-3 text-gray-800 text-2xl">Individual</span>
-                                </label>
-                            </div> */}
+                           
                             <div>
                                 <label className="inline-flex items-center">
                                     <input

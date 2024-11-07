@@ -14,7 +14,7 @@ function Login() {
     })
     const [message, setMessage] = useState('')
 
-    const { setUserData, setLoginData, setDashboardPath,setType } = useContext(Context)
+    const { setUserData, setLoginData, setDashboardPath, setType } = useContext(Context)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -38,8 +38,11 @@ function Login() {
 
     // ________________ Capitalize String First Letter______________
     useEffect(() => {
-        const capitalizedString = userType.charAt(0).toUpperCase() + userType.slice(1).toLowerCase();
-        setRegisteredUser({ ...registeredUser, type: capitalizedString })
+
+        if (userType) { //change
+            const capitalizedString = userType.charAt(0).toUpperCase() + userType.slice(1).toLowerCase();
+            setRegisteredUser({ ...registeredUser, type: capitalizedString })
+        }
 
     }, [userType])
 
@@ -88,6 +91,7 @@ function Login() {
                 }, 2000)
 
             } catch (error) {
+                console.log(error);
                 setMessage("Login failed. Please try again.");
             }
         }
@@ -95,7 +99,7 @@ function Login() {
         // _____________ Condition to Login user ______
         if (loginCheck) {
             userLoggedInCheck()
-            setLoginCheck(prev => !prev)
+            setLoginCheck(false)
         }
 
     }, [loginCheck, registeredUser.mobile, registeredUser.password])

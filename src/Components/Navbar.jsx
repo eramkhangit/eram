@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { IoIosMenu } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -10,22 +10,18 @@ import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
 
-    const [show, setShow] = useState(false)
     const navigate = useNavigate()
+    // _________ material ui drawer ________
+    const [open, setOpen] = React.useState(false);
 
-    const { setUserData, userData, loginData, type,setType,setDashboardPath } = useContext(Context)
+    const toggleDrawer = (newOpen) => () => {
+        setOpen(newOpen);
+    };
+    const { setUserData, userData, setLoginData, loginData, type, setType, setDashboardPath } = useContext(Context)
 
     const c = userData.company ? userData.company : loginData.company
     const n = userData.name ? userData.name : loginData.name
-    const id = userData.id ? userData.id : loginData.id
-
-    // ___________ Check it _________
-    useEffect(() => {
-        if (n)
-            setShow(true)
-        else
-            setShow(false)
-    }, [c, n])
+    // const id = userData.id ? userData.id : loginData.id
 
     // ________________ Dashboard Check ____________
     const handleDashboardLink = () => {
@@ -48,25 +44,18 @@ function Navbar() {
         }
     }
 
-    // __________________ Logout User______________
+    // __________________ Logout______________
     const logoutUser = () => {
         window.localStorage.removeItem("User Name")
         window.localStorage.removeItem("User Type")
         window.localStorage.removeItem("Dashboard Path")
 
-        setUserData(() => ({ name: '', type: '', dashboardPath: '' }))
-        setShow(false)
+        setUserData({ name: '', type: '', dashboardPath: '' })
+        setLoginData({ name: '', id: '', mobile: '', company: '' }) // change
         setType('')
         setDashboardPath('')
         navigate('/')
     }
-
-    // _________ material ui drawer ________
-    const [open, setOpen] = React.useState(false);
-
-    const toggleDrawer = (newOpen) => () => {
-        setOpen(newOpen);
-    };
 
     return (
 
@@ -76,13 +65,13 @@ function Navbar() {
             <div className='flex pt-4 user-text justify-center gap-4  items-center text-lg'>
 
                 {
-                    (show && id)// check it
+                    n
                     &&
                     <span className='user-text'> {n}</span>
                 }
 
                 {
-                    (!show && id)
+                    c
                     &&
                     <span className='user-text'> {c}</span>
                 }
@@ -187,56 +176,6 @@ function Navbar() {
                 </Box>
 
             </Drawer>
-
-            {/* ______________ Responsive Menu __________ */}
-            {/* <COffcanvas show={visible} onHide={() => setVisible(false)} placement="start" className="max-w-[65%] border-red-600">
-
-                <OffcanvasHeader className='h-[13vh] '>
-                    <OffcanvasTitle className='text-2xl'>C Point</OffcanvasTitle>
-                    <CCloseButton className="text-reset text-xl" onClick={() => setVisible(false)} />
-                </OffcanvasHeader>
-
-                <OffcanvasBody className='px-2 py-3 bg-color '>
-
-                    <Card className=" w-full shadow-none bg-[#DDDDDD] ">
-
-                        <List className='p-0'>
-
-                            <ListItem className='mobile-menu py-2 px-3' >
-                                <Link to="/home" onClick={handleLinkClick}>Home</Link>
-                            </ListItem>
-
-                            <ListItem className='mobile-menu py-2 px-3'>
-                                <button onClick={handleDashboardLink}>Dashboard</button>
-                            </ListItem>
-
-                            <ListItem className='mobile-menu py-2 px-3'>
-                                <Link to="/service" onClick={handleLinkClick}>Service</Link>
-                            </ListItem>
-
-                            <ListItem className='mobile-menu py-2 px-3'>
-                                <Link to="/contactus" onClick={handleLinkClick}> Contact us</Link>
-                            </ListItem>
-
-                            {
-                                (userData.name && userData.dashboardPath)
-                                    ?
-                                    <ListItem className='mobile-menu py-2 px-3' >
-                                        <button onClick={logoutUser}>Log Out</button>
-                                    </ListItem>
-                                    :
-                                    <ListItem className='mobile-menu py-2 px-3' >
-                                        <Link to="/" onClick={handleLinkClick}> User Type</Link>
-                                    </ListItem>
-                            }
-
-                        </List>
-
-                    </Card>
-
-                </OffcanvasBody>
-
-            </COffcanvas> */}
 
         </div>
 

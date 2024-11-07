@@ -38,7 +38,6 @@ import VendorDetail from './Components/VendorDashboardPages/VendorDetail';
 import Service from './Components/Services'
 import ContactUs from './Components/ContactUs';
 import MessagePage from './Components/MessagePage';
-import EmployeeLogin from './Components/EmployeeLogin';
 
 function App() {
   // window.localStorage.clear()
@@ -117,13 +116,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/newTask' element={<NewTask />} />
           <Route path='/messagePage' element={<MessagePage />} />
-
-          {/* ____________ Login Forms ____________ */}
-          {/* <Route path='/vendorLogin' element={<VendorLoginForm />} />
-          <Route path='/clientLogin' element={<ClientLoginForm />} />
-          <Route path='/employeeLogin' element={<EmployeeLoginForm />} /> */}
-
-          {/* _______________ Registration Pages ___________ */}
+  
+        {/* _______________ Registration Pages ___________ */}
           <Route path='/clientRegistration' element={<ClientRegistration />} />
           <Route path='/vendorRegistration' element={<VendorRegistration />} />
           <Route path='/employeeRegistration' element={<EmployeRegistration />} />
@@ -146,7 +140,7 @@ function App() {
           <Route path='/employeeServiceCharges' element={<EmployeeServiceCharges />} />
           <Route path='/employeeComplainRedressal' element={<EmployeeComplainRedressal />} />
           <Route path='/employeeUpdatePage' element={<EmployeeUpdatePage />} />
-          <Route path='/employeeLogin' element={<EmployeeLogin />} />
+
 
           {/* ______________ Dashboard Page (Vendor) _______________ */}
           <Route path='/vendorHistory' element={<VendorHistory />} />
